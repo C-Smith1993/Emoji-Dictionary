@@ -26,6 +26,9 @@ class DefinitionViewController: UIViewController {
         birthYearLabel.text = "Year of Birth \(emojiIcon.birthYear)"
         categoryLabel.text = "Category: \(emojiIcon.category)"
         definitionLabel.text = emojiIcon.definition
+        
+        definitionLabel.textColor = .blue
+        categoryLabel.textColor = .red
     }
 
     override func didReceiveMemoryWarning() {

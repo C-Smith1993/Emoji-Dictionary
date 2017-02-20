@@ -57,14 +57,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let emoji1 = Emoji()
         emoji1.stringEmoji = "😃"
         emoji1.birthYear = 2010
-        emoji1.category = "Faces"
-        emoji1.definition = "A smiley face"
+        emoji1.category = "Smileys & People"
+        emoji1.definition = "Happy Face"
         
         let emoji2 = Emoji()
-        emoji2.stringEmoji = "😴"
+        emoji2.stringEmoji = "🙃"
         emoji2.birthYear = 2010
-        emoji2.category = "Faces"
-        emoji2.definition = "A tired face"
+        emoji2.category = "Smileys & People"
+        emoji2.definition = "Upside Down Face"
         
         let emoji3 = Emoji()
         emoji3.stringEmoji = "👌"
