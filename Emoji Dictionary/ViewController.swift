@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var tableView: UITableView!
     
-    var emojiIcons = ["😃","😴","👌","👓","👛","🐹", "💋"]
+    var emojiIcons: [Emoji] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        emojiIcons = makeEmojiArray()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,25 +31,60 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = emojiIcons[indexPath.row]
+        let emoji = emojiIcons[indexPath.row]
+        cell.textLabel?.text = emoji.stringEmoji
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let emoji = emojiIcons[indexPath.row]
-        performSegue(withIdentifier: "moveSegue", sender: emoji)
+        let emojiIcon = emojiIcons[indexPath.row]
+        performSegue(withIdentifier: "moveSegue", sender: emojiIcon)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let defViewController = segue.destination as! DefinitionViewController
-        defViewController.emojiIcon = sender as! String
+        defViewController.emojiIcon = sender as! Emoji
     }
     
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func makeEmojiArray() -> [Emoji] {
+        let emoji1 = Emoji()
+        emoji1.stringEmoji = "😃"
+        emoji1.birthYear = 2010
+        emoji1.category = "Faces"
+        emoji1.definition = "A smiley face"
+        
+        let emoji2 = Emoji()
+        emoji2.stringEmoji = "😴"
+        emoji2.birthYear = 2010
+        emoji2.category = "Faces"
+        emoji2.definition = "A tired face"
+        
+        let emoji3 = Emoji()
+        emoji3.stringEmoji = "👌"
+        emoji3.birthYear = 2010
+        emoji3.category = "Hand signs"
+        emoji3.definition = "Okay hand sign"
+        
+        let emoji4 = Emoji()
+        emoji4.stringEmoji = "👓"
+        emoji4.birthYear = 2010
+        emoji4.category = "Items"
+        emoji4.definition = "A pair of sunglasses"
+        
+        let emoji5 = Emoji()
+        emoji5.stringEmoji = "🎵"
+        emoji5.birthYear = 2010
+        emoji5.category = "Symbols"
+        emoji5.definition = "A music note"
+        
+        return[emoji1, emoji2, emoji3, emoji4, emoji5]
     }
 }
 
